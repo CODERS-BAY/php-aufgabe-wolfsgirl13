@@ -1,62 +1,111 @@
 <?php include_once('header.php')?>
 
 
-<div class="d-flex" id="wrapper">
+
+<div id="content" class="site-content">
+    <div id="primary" class="content-area column two-thirds">
+        <main id="main" class="site-main" role="main">
+            
+                <!--wenn Username gesetzt, dann werden die Notizen ausgegeben-->
+                <?php if(isset($_SESSION['username'])) : ?>
+
+                <?php 
+    include_once('include/database_con.php');
+    
+    $result = $dbcon->query("SELECT * FROM notes");
 
 
+    if($result->num_rows > 0) {
 
-  <div class="col col-2" id="sidebar">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet laborum eveniet totam consequatur, <br>
-      perspiciatis error vitae dolor, quod asperiores molestiae. Alias numquam sequi harum, quaerat fugit deserunt
-      reprehenderit dolores!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet laborum eveniet totam consequatur, <br>
-      perspiciatis error vitae dolor, quod asperiores molestiae. Alias numquam sequi harum, quaerat fugit deserunt
-      reprehenderit dolores!</p>
-  </div>
+        echo '<div id="notes">';
+        
+        while($row = $result->fetch_assoc()) { ?>
+
+                <div data-id="<?php echo $row['note_id']; ?> " class="note">
+                    <div class="note_headline"><?php echo $row['note_username']; ?></div>
+                    <div class="note_text"><?php echo $row['note_text']; ?></div>
+
+                    <div class="button remind">Merken</div>
+                    <!--eine Notiz merken-->
+
+                    <?php if($_SESSION['rights'] == 'admin' || $_SESSION['username'] 
+        == $row['note_username']) : ?>
+
+                    <div class="button delete">Löschen</div>
+                    <div class="button edit">Bearbeiten</div>
+
+                    <!--Eintrag darf nur von dem Ersteller der Nachricht oder vom Admin gelöscht oder bearbeitet werden-->
+
+                    <?php endif; ?>
+                </div>
+
+                <?php }
+    
+    echo '</div>';
+        }
+        
+    $dbcon->close();
+
+    if($_SESSION['rights'] != 'user') : ?>
+
+                <!--Eintrag hinzufügen------------------>
+                <div id="addentryform">
+                    <form method="post" id="addForm">
+                        <textarea name="text">Hier Eintrag hinzufügen ...</textarea>
+                        <input type="hidden" name="username" value="<?php echo $_SESSION['username']; ?>">
+                        <input type="hidden" name="noteId" value="">
+                        <!--Eintrag Ändern-->
+                        <input type="submit" value="hinzufügen">
+                    </form>
+                </div>
+
+               
+
+                <?php endif;
+    ?>
+
+                <?php else: ?>
+
+                <!--------------------login.php LOGIN form------------------>
+
+                <img src="images/logo-12.svg" class="w-50 img-fluid rounded mx-auto d-block" alt="Logo">
+
+                <div class="w-50 img-fluid rounded mx-auto d-block">
+                    <div class="card my-auto shadow">
+                        <div class="card-header text-center">
+                            <h4>Loggen Sie sich ein:</h4>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" action="login.php">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" id="username" class="form-control" name="username">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="userpwd">Passwort</label>
+                                    <input type="password" id="userpwd" class="form-control" name="userpwd">
+                                </div>
+                                <input type="submit" class="btn btn-dark w-100" value="login" name="einloggen">
+                        </div>
+                        <div class="card-footer text-right">
+                            <small>&copy; My Company</small>
+                        </div>
 
 
+                        </form>
+                    </div>
+                </div>
 
-  <!-----------CONTENT--------------->
-  <div class="container fluid bg-faded mt-5 mb-5">
+                <?php endif; ?>
 
-
-    <div class="row">
-      <div class="col col-6">
-        <h3>Das ist Teil 1</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A aperiam consequatur non asperiores iusto velit
-          accusamus accusantium dicta, exercitationem quia ratione officiis porro ut dolor distinctio doloremque
-          possimus modi doloribus?</p>
-      </div>
-      <div class="col col-6">
-        <h3>Das ist Teil 2</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A aperiam consequatur non asperiores iusto velit
-          accusamus accusantium dicta, exercitationem quia ratione officiis porro ut dolor distinctio doloremque
-          possimus modi doloribus?</p>
-      </div>
+            </div>
+            <div class="clearfix">
+            </div>
+            <nav class="pagination"></nav>
+        </main>
+        <!-- #main -->
     </div>
-    <div class="row">
-      <div class="col col-6 mt-4">
-        <h3>Das ist Teil 3</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A aperiam consequatur non asperiores iusto velit
-          accusamus accusantium dicta, exercitationem quia ratione officiis porro ut dolor distinctio doloremque
-          possimus modi doloribus?</p>
-      </div>
-      <div class="col col-6 mt-4">
-        <h3>Das ist Teil 4</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sint earum incidunt nobis debitis architecto?
-          Harum fugiat iure quidem molestias maxime facilis? Autem odio adipisci incidunt, aliquid quam et veniam.
-          Incidunt fugiat officiis rem dolor perspiciatis dolorem, consectetur nulla quas cupiditate iusto ex ipsum sunt
-          beatae necessitatibus autem? Sunt dicta cupiditate id quibusdam ratione nostrum accusamus ipsum fugit
-          doloremque soluta.</p>
-      </div>
-    </div>
+    <!-- #primary -->
 
 
-
-   
-  </div>
-  
-</div>
-<div class="col col-12" id="footer">
-      <?php include_once('footer.php')?>
-    </div>
+    <?php include_once('footer.php')?>

@@ -1,12 +1,245 @@
-.form_box {
-    max-width: 400px;
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+ main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+main#home {
+  height: calc(100vh - 280px);
+}
+
+
+  h1 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  }
+  
+  h2, h3, h4 {
+    text-transform: uppercase;
+  }
+  span {
+    margin: 0;
+  }
+
+  button {
+    max-width: 100vh;
+    color: black;
+    font-weight: bold;
+    padding: 20px;
+    text-transform: uppercase;
     margin: auto;
+    display: flex;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.eingeloggt {
+  text-align: center;
 }
-input[type="text"] {
-   
-    text-align: center;
+
+
+.note_text {
+  padding: 0 0 15px 0;
 }
-input[type="password"] {
-    
-    text-align: center;
+/*---image user----*/
+.userpicture {
+  border-radius: 50%;
+
 }
+/*---image team----*/
+.teampicture {
+max-width: 10px;
+float: left;
+}
+#nav_user {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.button {
+  font-weight: bold;
+  display: flex;
+  text-transform: uppercase;
+}
+.img {
+  border-radius: 50%;
+}
+
+
+/*------------HEADER----------------*/
+header {
+  /* display: flex; */
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: auto;
+}
+ul li a {   
+  padding: 1rem;
+  min-width: 5rem;
+  text-align: center;
+  font-size: 1.0rem;
+  text-transform: uppercase;
+  padding: 15px 20px;
+  margin: 0 5px 0 5px;
+  text-decoration: none;
+
+}
+
+ul li a:hover {
+  color: white;
+}
+.nav-item img {
+  min-width: 10px;
+  padding:0;
+  border-radius: 50%;
+}
+#navbar {
+  max-width: 80vh;
+  height: 100px;
+  font-size: large;
+}
+
+.blue .nav-item {
+  background-color: #9bc3dd;
+  color: white;
+}
+.red .nav-item {
+  background-color: #d97b73;
+  color: white;
+}
+.yellow .nav-item {
+  background-color: #fad977;
+  color: white;
+}
+.green .nav-item {
+  background-color: #b2b651;
+  color: white;
+} 
+
+/*-----------INPUT-FELDER--------------------------------------------------*/
+input[type=text], select {
+  width: 500px;
+   padding: 20px;
+   margin: auto;
+   margin-bottom: 10px;
+   display: flex;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   box-sizing: border-box;
+   font-size: large;
+}
+input[type=password], select {
+ width: 500px;
+ padding: 20px;
+ margin: auto;
+ margin-bottom: 10px;
+ display: flex;
+ border: 1px solid #ccc;
+ border-radius: 4px;
+ box-sizing: border-box;
+}
+/*Einloggen-btn*/
+input[type=submit] {
+ width: 200px;
+ background-color: #494747;
+ color: white;
+ padding: 20px;
+ text-transform: uppercase;
+ margin: auto;
+ display: flex;
+ border: none;
+ border-radius: 5px;
+ text-align: center;
+ cursor: pointer;
+ margin-top: 2em;
+}
+
+input[type=submit]:hover {
+ background-color: #0f0f0f;
+}
+
+/*---------NOTES------------------------------------------------*/
+#notes {
+  display: flex;
+  max-height: 300px;  
+}
+.note {
+  padding: 0px;
+  
+  margin: 10px;
+  width: calc(100% / 3 - 20px);
+
+}
+.note.active {
+  border: 1px solid rgb(236,108,108);
+}
+.note.active .note_headline {
+  background-color: rgb(236, 108, 108);
+}
+.note_headline {
+  font-weight: bold;
+  padding: 0 0 10px 0;
+  color: #494747;
+}
+.blue .note {
+  background-color: #9bc3dd;
+  color: white;
+}
+.red .not {
+  background-color: #d97b73;
+  color: white;
+}
+.yellow .note {
+  background-color: #fad977;
+  color: white;
+}
+.green .note {
+  background-color: #b2b651;
+  color: white;
+}
+.note_text {
+  padding: 0 0 15px 0;
+}
+/*Eintrag hinzufügen Form*/
+
+#addentryform {
+  width: 50em;
+  padding: 5em;
+  margin: auto;
+}
+textarea {
+	caret-color: red;  
+	width: 40em;
+	height: 10em;
+	border: 1px solid #cccccc;
+	padding: 0.5em;
+	font-family: Tahoma, sans-serif;
+  margin: auto;
+  padding-bottom: 2em;
+}
+textarea:focus {
+      background: rgb(196, 196, 181);
+}
+.form-box {
+  box-shadow: 1px 1px 10px #777;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 500px;
+}
+
+footer {
+  position: fixed;
+  padding: .6em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+

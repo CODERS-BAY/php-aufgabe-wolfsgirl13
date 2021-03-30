@@ -1,7 +1,23 @@
-Firmensite
-- SQL DB
-    user/employees
-    teams
-    notes
-- login Formular
+<!--App mit Lisa-->
+
+TODO: Teams Logo neben User-Picture - KLAPPT EINFACH NICHT
+TODO: User Color?? Google Browser - mal so und mal so ... zum Verzweifeln!!!
+TODO: Styling input-Felder
+TODO: Add teams-picture klappt nicht ...??
+TODO: Funktion "merken"funktioniert nicht - nochmals Vidoe ansehen, was falsch ...
+TODO: Funktion Änderung Team funktioniert nicht
+TODO: User-Picture - Fehlermeldungen klappt nicht (mehr)
+
+
+User hinzufügen klappt, trotz ein paar Fehlermeldungen (TODO: in DB kommt "user_rights" als array heraus ...?)
+
+Navigation nicht schön, aber funktioniert - ERLEDIGT
+Nachricht updaten - ERLEDIGT
+User löschen - ERLDIGT
+neues Team anlegen - ERLEDIGT
+Teamfarbe - Erledigt
+User Picture nachträglich ändern - ERLEDIGT, trotz Fehlermeldungen -> leider klappt nur bei "neuen MA anlegen"
+Style Logout - ERLEDIGT
+Header mit Teamname - ERLEDIGT
+
 
