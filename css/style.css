@@ -1,0 +1,12 @@
+.form_box {
+    max-width: 400px;
+    margin: auto;
+}
+input[type="text"] {
+   
+    text-align: center;
+}
+input[type="password"] {
+    
+    text-align: center;
+}

@@ -1,0 +1,7 @@
+Firmensite
+- SQL DB
+    user/employees
+    teams
+    notes
+- login Formular
+
